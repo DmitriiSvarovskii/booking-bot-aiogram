@@ -13,7 +13,7 @@ ENDPOINT_URL = settings.SERVICE_URL
 @router.message(F.text == "/start")
 async def start(message: types.Message):
     request_body = await create_user_request(message)
-
+    print(request_body)
     data = await send_user_request(request_body)
 
     await message.answer(
@@ -29,7 +29,7 @@ async def create_user_request(message: types.Message) -> dict:
         last_name=message.from_user.last_name or None,
         username=message.from_user.username or None,
         is_premium=message.from_user.is_premium or False
-    ).model_dump()
+    ).model_dump(exclude_none=True)
 
 
 async def send_user_request(request_body: dict) -> dict:
