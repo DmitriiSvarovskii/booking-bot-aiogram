@@ -25,4 +25,4 @@ jobs:
 
       - name: Deploy to server
         run: |
-          ssh root@213.139.208.72 "cd /var/www/booking/booking-bor-aiogram && git pull origin main && docker-compose up -d --build"
+          ssh root@213.139.208.72 "cd /var/www/booking/booking-bot-aiogram && git pull origin main && docker-compose up -d --build"
